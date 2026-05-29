@@ -42,6 +42,8 @@ class MainActivity : AppCompatActivity() {
                     val intent = Intent(this, MenuActivity::class.java)
                     startActivity(intent)
                     finish()
+                }else{
+                    Toast.makeText(this, "Usuario o Contraseña incorrectos", Toast.LENGTH_SHORT).show()
                 }
             }else{
                 Toast.makeText(this, "Ingrese usuario y o contraseña", Toast.LENGTH_SHORT).show()
