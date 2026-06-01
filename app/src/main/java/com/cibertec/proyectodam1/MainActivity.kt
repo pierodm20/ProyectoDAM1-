@@ -39,7 +39,7 @@ class MainActivity : AppCompatActivity() {
 
             if (usuario.isNotEmpty() && contraseña.isNotEmpty()){
                 if (usuario == "admin" && contraseña == "123"){
-                    val intent = Intent(this, MenuActivity::class.java)
+                    val intent = Intent(this, InicioActivity::class.java)
                     startActivity(intent)
                     finish()
                 }else{

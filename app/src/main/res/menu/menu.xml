@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <item
+        android:id="@+id/Inicio"
+        android:icon="@drawable/ic_inicio"
+        android:title="Inicio"
+        />
+    <item
+        android:id="@+id/Hoteles"
+        android:icon="@drawable/ic_hoteles"
+        android:title="Hoteles"
+        />
+    <item
+        android:id="@+id/Perfil"
+        android:icon="@drawable/ic_perfil"
+        android:title="Perfil"
+        />
+
+</menu>
