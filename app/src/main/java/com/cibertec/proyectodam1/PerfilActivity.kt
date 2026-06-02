@@ -12,18 +12,14 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 class PerfilActivity : AppCompatActivity() {
     private lateinit var bnvMenu : BottomNavigationView
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_perfil)
 
         bnvMenu = findViewById<BottomNavigationView>(R.id.bnvMenu)
-
-
         //Marca el ID del Icono
         bnvMenu.selectedItemId = R.id.Perfil
-
         bnvMenu.setOnItemSelectedListener {  item ->
             when(item.itemId){
                 R.id.Perfil ->{
@@ -40,7 +36,6 @@ class PerfilActivity : AppCompatActivity() {
                 else -> false
             }
         }
-
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.dlPerfil)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())

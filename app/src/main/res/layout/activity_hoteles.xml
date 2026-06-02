@@ -8,27 +8,40 @@
     tools:context=".HotelesActivity"
     android:fitsSystemWindows="true">
 
-
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:src="@drawable/fondo"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:scaleType="centerCrop"/>
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="HOTELES"
-        android:layout_margin="50dp"
-        android:textAlignment="center" />
-
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/fondo"
+            android:scaleType="centerCrop"/>
+
+        <TextView
+            android:id="@+id/tvHTitulo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Hoteles"
+            android:textSize="25sp"
+            android:layout_margin="20dp"
+            android:textColor="@color/titulos"
+            android:layout_alignParentTop="true"
+            android:textAlignment="center"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/rvHoteles"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvHoteles"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintTop_toBottomOf="@+id/tvHTitulo"
+            app:layout_constraintBottom_toTopOf="@id/bnvMenu"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_below="@id/tvHTitulo"/>
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/bnvMenu"
@@ -45,6 +58,11 @@
             app:itemRippleColor="@null" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/nvMenu"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="end"
+        app:menu="@menu/menu"/>
 
 </androidx.drawerlayout.widget.DrawerLayout>

@@ -21,10 +21,7 @@ class InicioActivity : AppCompatActivity() {
         enableEdgeToEdge()
         setContentView(R.layout.activity_inicio)
 
-
         bnvMenu = findViewById<BottomNavigationView>(R.id.bnvMenu)
-
-
         //Marca el ID del Icono
         bnvMenu.selectedItemId = R.id.Inicio
 
@@ -45,17 +42,12 @@ class InicioActivity : AppCompatActivity() {
             }
         }
 
-
-
-
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.dlInicio)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
     }
-
-
     fun cambioActivity(activityDestino : Class<out Activity>){
         val intent = Intent(this,activityDestino)
         startActivity(intent)
