@@ -15,30 +15,37 @@
         android:layout_margin="15dp">
 
         <ImageView
-            android:id="@+id/ivHImagen"
+            android:id="@+id/ivImagen"
             android:layout_width="match_parent"
-            android:layout_height="200dp"
+            android:layout_height="150dp"
             android:src="@drawable/fondo"
             android:scaleType="centerCrop"/>
 
         <TextView
-            android:id="@+id/tvHNombre"
+            android:id="@+id/tvNombre"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Nombre: "/>
+            android:text="Hotel: "/>
 
 
         <TextView
-            android:id="@+id/tvHCapacidad"
+            android:id="@+id/tvCiudad"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Capacidad:"/>
+            android:text="Ciudad:"/>
+
 
         <TextView
-            android:id="@+id/tvHPrecio"
+            android:id="@+id/tvEstrellas"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Precio: "/>
+            android:text="Estrellas: "/>
+
+        <TextView
+            android:id="@+id/tvPrecio"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Precio por noche: "/>
 
     </LinearLayout>
 

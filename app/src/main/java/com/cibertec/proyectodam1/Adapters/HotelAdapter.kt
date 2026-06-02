@@ -19,17 +19,19 @@ class HotelAdapter(private val hoteles: List<Hotel>, val context: Activity): Rec
     override fun onBindViewHolder(holder: HotelAdapterViewHolder, position: Int) {
         val hotel = hoteles[position]
         Glide.with(context).load(hotel.imagen).into(holder.ivHImagen)
-        holder.tvHNombre.text = hotel.nombre
-        holder.tvHCapacidad.text = "S/. ${hotel.capacidad}"
-        holder.tvHPrecio.text = "S/. ${hotel.precio}"
+        holder.tvHNombre.text = "Hotel: ${hotel.nombre}"
+        holder.tvHCiudad.text = "Ciudad: ${hotel.ciudad}"
+        holder.tvHEstrellas.text = "Estrellas: ${hotel.estrellas}"
+        holder.tvHPrecioXNoche.text = "Precio por noche: S/. ${hotel.precioXnoche}"
     }
     override fun getItemCount(): Int {
         return hoteles.size
     }
     inner class HotelAdapterViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
-        val tvHNombre: TextView = itemView.findViewById<TextView>(R.id.tvHNombre)
-        val ivHImagen: ImageView = itemView.findViewById<ImageView>(R.id.ivHImagen)
-        val tvHCapacidad: TextView = itemView.findViewById<TextView>(R.id.tvHCapacidad)
-        val tvHPrecio: TextView = itemView.findViewById<TextView>(R.id.tvHPrecio)
+        val tvHNombre: TextView = itemView.findViewById<TextView>(R.id.tvNombre)
+        val tvHCiudad: TextView = itemView.findViewById<TextView>(R.id.tvCiudad)
+        val tvHEstrellas : TextView = itemView.findViewById<TextView>(R.id.tvEstrellas)
+        val tvHPrecioXNoche: TextView = itemView.findViewById<TextView>(R.id.tvPrecio)
+        val ivHImagen: ImageView = itemView.findViewById<ImageView>(R.id.ivImagen)
     }
 }
