@@ -33,6 +33,11 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        tvContraseña.setOnClickListener {
+            val intent = Intent(this, ContrasenaActivity::class.java)
+            startActivity(intent)
+        }
+
         btnIngresar.setOnClickListener {
             val usuario = txtInCorreo.text.toString()
             val contraseña = txtInContraseña.text.toString()

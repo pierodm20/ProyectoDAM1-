@@ -1,19 +1,17 @@
 package com.cibertec.proyectodam1
 
-import android.app.Activity
-import android.content.Intent
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import androidx.drawerlayout.widget.DrawerLayout
-import com.google.android.material.bottomnavigation.BottomNavigationMenuView
+import androidx.fragment.app.Fragment
+import com.cibertec.proyectodam1.Fragments.HotelesFragment
+import com.cibertec.proyectodam1.Fragments.InicioFragment
+import com.cibertec.proyectodam1.Fragments.PerfilFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class InicioActivity : AppCompatActivity() {
-
-
     private lateinit var bnvMenu : BottomNavigationView
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -22,37 +20,38 @@ class InicioActivity : AppCompatActivity() {
         setContentView(R.layout.activity_inicio)
 
         bnvMenu = findViewById<BottomNavigationView>(R.id.bnvMenu)
-        //Marca el ID del Icono
-        bnvMenu.selectedItemId = R.id.Inicio
+        if (savedInstanceState == null){
+            cargarFragmento(HotelesFragment())
+            bnvMenu.selectedItemId = R.id.Hoteles
+        }
 
-        bnvMenu.setOnItemSelectedListener {  item ->
+        bnvMenu.setOnItemSelectedListener { item ->
             when(item.itemId){
-                R.id.Inicio ->{
+                R.id.Hoteles -> {
+                    // SE CONECTA LA LISTA
+                    cargarFragmento(HotelesFragment())
                     true
                 }
-                R.id.Hoteles ->{
-                    cambioActivity(HotelesActivity::class.java)
+                R.id.Inicio -> {
+                    cargarFragmento(InicioFragment())
+
                     true
                 }
-                R.id.Perfil ->{
-                    cambioActivity(PerfilActivity::class.java)
+                R.id.Perfil -> {
+                    cargarFragmento(PerfilFragment())
                     true
                 }
                 else -> false
             }
         }
 
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.dlInicio)) { v, insets ->
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.dlHoteles)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
     }
-    fun cambioActivity(activityDestino : Class<out Activity>){
-        val intent = Intent(this,activityDestino)
-        startActivity(intent)
+    private fun cargarFragmento(fragmento: Fragment){
+        supportFragmentManager.beginTransaction().replace(R.id.fcvContenedorLista, fragmento).commit()
     }
-
-
-
 }

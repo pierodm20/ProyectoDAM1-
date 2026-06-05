@@ -5,5 +5,5 @@
     <color name="gris">#778899</color>
     <color name="celeste">#1E90FF</color>
     <color name="titulos">#4B80FB</color>
-
+    <color name="transparencia">#D9FFFFFF</color>
 </resources>

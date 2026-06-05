@@ -9,6 +9,10 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.fragment.app.Fragment
+import com.cibertec.proyectodam1.Fragments.HotelesFragment
+import com.cibertec.proyectodam1.Fragments.InicioFragment
+import com.cibertec.proyectodam1.Fragments.PerfilFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class ListaActivity : AppCompatActivity() {
@@ -43,15 +47,15 @@ class ListaActivity : AppCompatActivity() {
         bnvMenu.setOnItemSelectedListener { item ->
             when(item.itemId){
                 R.id.Hoteles -> {
-                    cambioActivity(HotelesActivity::class.java)
+                    cargarFragmento(HotelesFragment())
                     true
                 }
                 R.id.Inicio -> {
-                    cambioActivity(InicioActivity::class.java)
+                    cargarFragmento(PerfilFragment())
                     true
                 }
                 R.id.Perfil -> {
-                    cambioActivity(PerfilActivity::class.java)
+                    cargarFragmento(InicioFragment())
                     true
                 }
                 else -> false
@@ -65,8 +69,7 @@ class ListaActivity : AppCompatActivity() {
         }
     }
 
-    fun cambioActivity(activityDestino : Class<out Activity>){
-        val intent = Intent(this, activityDestino)
-        startActivity(intent)
+    private fun cargarFragmento(fragmento: Fragment){
+        supportFragmentManager.beginTransaction().replace(R.id.fcvContenedorLista, fragmento).commit()
     }
 }
