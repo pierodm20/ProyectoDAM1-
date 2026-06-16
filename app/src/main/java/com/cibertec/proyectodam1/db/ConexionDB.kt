@@ -1,9 +1,8 @@
-package com.cibertec.proyectodam1
+package com.cibertec.proyectodam1.db
 
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
-
 
 class ConexionDB(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null, DATABASE_VERSION) {
 

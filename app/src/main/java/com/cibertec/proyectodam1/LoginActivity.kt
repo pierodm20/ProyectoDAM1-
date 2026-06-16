@@ -11,7 +11,7 @@ import androidx.core.view.WindowInsetsCompat
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.textfield.TextInputEditText
 
-class MainActivity : AppCompatActivity() {
+class LoginActivity : AppCompatActivity() {
     private lateinit var tvRegistro: TextView
     private lateinit var tvContraseña: TextView
     private lateinit var btnIngresar: MaterialButton
@@ -21,7 +21,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_login)
         tvRegistro = findViewById<TextView>(R.id.tvRegistro)
         tvContraseña = findViewById<TextView>(R.id.tvContraseña)
         btnIngresar = findViewById<MaterialButton>(R.id.btnIngresar)

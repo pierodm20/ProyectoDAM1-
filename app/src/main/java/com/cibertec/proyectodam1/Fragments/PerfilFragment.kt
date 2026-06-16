@@ -9,7 +9,7 @@ import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
-import com.cibertec.proyectodam1.MainActivity
+import com.cibertec.proyectodam1.LoginActivity
 import com.cibertec.proyectodam1.R
 
 class PerfilFragment : Fragment() {
@@ -33,7 +33,7 @@ class PerfilFragment : Fragment() {
             Toast.makeText(requireContext(), "Abriendo Configuraciones", Toast.LENGTH_SHORT).show()
         }
         optionCerrarSesion.setOnClickListener {
-            val intent = Intent(requireActivity(), MainActivity::class.java)
+            val intent = Intent(requireActivity(), LoginActivity::class.java)
             startActivity(intent)
             Toast.makeText(requireContext(), "Cerrando sesión", Toast.LENGTH_SHORT).show()
             requireActivity().finish()

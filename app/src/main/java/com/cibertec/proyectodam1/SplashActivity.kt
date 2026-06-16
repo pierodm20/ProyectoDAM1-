@@ -1,5 +1,6 @@
 package com.cibertec.proyectodam1
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.os.CountDownTimer
@@ -20,16 +21,18 @@ class SplashActivity : AppCompatActivity() {
 
         ivLogo.animate().rotationBy(360f).setDuration(2000).start()
 
-        timer = object : CountDownTimer(2000, 1000){
-            override fun onFinish() {
-                val intent = Intent(this@SplashActivity, MainActivity::class.java)
-                startActivity(intent)
-                finish()
+        android.os.Handler(android.os.Looper.getMainLooper()).postDelayed({
+            val prefs = getSharedPreferences("MiAppPrefs", MODE_PRIVATE)
+            val esPrimeraVez = prefs.getBoolean("esPrimeraVez", true)
+
+            if (esPrimeraVez) {
+                startActivity(Intent(this, TutorialActivity::class.java))
+            } else {
+                startActivity(Intent(this, LoginActivity::class.java))
             }
-            override fun onTick(p0: Long) {
-               //Codigo a ejecutarse por cada segundo
-            }
-        }.start()
+            finish()
+        }, 2000)
+
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())

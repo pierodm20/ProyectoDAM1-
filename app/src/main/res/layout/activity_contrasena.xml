@@ -39,10 +39,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Recuperar contraseña"
-                android:textColor="@color/celeste"
-                android:layout_marginHorizontal="15dp"
-                android:textSize="20sp"
-                android:fontFamily="@font/mono_bold"/>
+                style="@style/titulo"
+                android:layout_marginHorizontal="15dp"/>
 
             <View
                 android:layout_width="match_parent"
