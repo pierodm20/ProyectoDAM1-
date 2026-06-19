@@ -26,5 +26,23 @@
         <item name="android:textColor">@color/black</item>
         <item name="android:textAlignment">center</item>
     </style>
+    <style name="dialogTextos">
+        <item name="android:textSize">18sp</item>
+        <item name="android:fontFamily">@font/variable_font_wght</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textAlignment">center</item>
+    </style>
+    <style name="dialogButton">
+        <item name="android:fontFamily">sans-serif-smallcaps</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textAlignment">center</item>
+    </style>
+    <style name="textos">
+        <item name="android:textSize">13sp</item>
+        <item name="android:fontFamily">@font/variable_font_wght</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
 
 </resources>

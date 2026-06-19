@@ -6,7 +6,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/celeste"
+    android:background="@color/backtutorial"
     tools:context=".TutorialActivity">
     
     <androidx.viewpager2.widget.ViewPager2
@@ -25,7 +25,7 @@
         android:layout_marginHorizontal="80dp"
         android:layout_marginVertical="20dp"
         android:text="Comenzar"
-        android:backgroundTint="@color/white"
+        android:backgroundTint="@color/celeste"
         android:textColor="@color/black"/>
 
     <com.tbuonomo.viewpagerdotsindicator.DotsIndicator

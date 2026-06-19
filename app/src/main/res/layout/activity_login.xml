@@ -65,8 +65,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Usuario o telefono"
-                    android:inputType="text"
-                    android:maxLength="15"/>
+                    android:inputType="textEmailAddress"/>
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -83,7 +82,7 @@
                 app:passwordToggleEnabled="true">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/txtInContraseña"
+                    android:id="@+id/txtInContrasenia"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Contraseña"
@@ -103,7 +102,7 @@
                 android:backgroundTint="@color/celeste"/>
 
             <TextView
-                android:id="@+id/tvContraseña"
+                android:id="@+id/tvContrasenia"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="¿Olvidaste tu contraseña?"

@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "68015482282",
+    "firebase_url": "https://hotelmatch-45c19-default-rtdb.firebaseio.com",
+    "project_id": "hotelmatch-45c19",
+    "storage_bucket": "hotelmatch-45c19.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:68015482282:android:f4e6195b26182aeb9877d3",
+        "android_client_info": {
+          "package_name": "com.cibertec.proyectodam1"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD7QEHi3oX7bY6GXzWGYdZdZZd3NBHEUP4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

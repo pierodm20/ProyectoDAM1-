@@ -9,8 +9,11 @@ import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import com.cibertec.proyectodam1.LoginActivity
 import com.cibertec.proyectodam1.R
+import com.google.android.material.button.MaterialButton
+import com.google.firebase.auth.FirebaseAuth
 
 class PerfilFragment : Fragment() {
     private lateinit var txtUsuarioPerfil: TextView
@@ -33,10 +36,23 @@ class PerfilFragment : Fragment() {
             Toast.makeText(requireContext(), "Abriendo Configuraciones", Toast.LENGTH_SHORT).show()
         }
         optionCerrarSesion.setOnClickListener {
-            val intent = Intent(requireActivity(), LoginActivity::class.java)
-            startActivity(intent)
-            Toast.makeText(requireContext(), "Cerrando sesión", Toast.LENGTH_SHORT).show()
-            requireActivity().finish()
+            val dialog = LayoutInflater.from(requireContext()).inflate(R.layout.dialog_cerrar_sesion, null)
+            val builder = AlertDialog.Builder(requireContext())
+            builder.setView(dialog)
+            val alertDialog = builder.create()
+            alertDialog.show()
+            val btnCancelar = dialog.findViewById<MaterialButton>(R.id.btnCancelar)
+            val btnConfirmarCerrar = dialog.findViewById<MaterialButton>(R.id.btnConfirmarCerrar)
+            btnCancelar.setOnClickListener {
+                alertDialog.dismiss()
+            }
+            btnConfirmarCerrar.setOnClickListener {
+                FirebaseAuth.getInstance().signOut()
+                val intent = Intent(requireContext(), LoginActivity::class.java)
+                startActivity(intent)
+                alertDialog.dismiss()
+                requireActivity().finish()
+            }
         }
         // Inflate the layout for this fragment
         return view

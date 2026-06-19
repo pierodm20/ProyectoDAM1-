@@ -49,6 +49,13 @@
                 android:layout_marginVertical="20dp"
                 android:background="@color/celeste"/>
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Escriba su correo electronico para enviar el codigo"
+                style="@style/textos"
+                android:layout_margin="15dp"/>
+
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -58,43 +65,22 @@
                 app:boxCornerRadiusTopStart="20dp"
                 app:boxCornerRadiusTopEnd="20dp"
                 app:boxCornerRadiusBottomStart="20dp"
-                app:boxCornerRadiusBottomEnd="20dp"
-                app:passwordToggleEnabled="true">
+                app:boxCornerRadiusBottomEnd="20dp">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/txtInRecContra"
+                    android:id="@+id/txtInCorreo"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Nueva contraseña"
-                    android:inputType="numberPassword"/>
+                    android:hint="Colocar correo"
+                    android:inputType="textEmailAddress"/>
 
             </com.google.android.material.textfield.TextInputLayout>
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="15dp"
-                app:boxCornerRadiusTopStart="20dp"
-                app:boxCornerRadiusTopEnd="20dp"
-                app:boxCornerRadiusBottomStart="20dp"
-                app:boxCornerRadiusBottomEnd="20dp"
-                app:boxStrokeColor="@color/gris"
-                app:passwordToggleEnabled="true">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/txtInRepContra"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="Repetir contraseña"
-                    android:inputType="numberPassword"/>
-
-            </com.google.android.material.textfield.TextInputLayout>
-            
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/btnCambiarContra"
+                android:id="@+id/btnEnviarCorreo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Cambiar contraseña"
+                android:text="Enviar"
                 app:cornerRadius="15dp"
                 android:backgroundTint="@color/celeste"
                 android:layout_margin="15dp"/>

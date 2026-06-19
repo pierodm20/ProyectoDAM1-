@@ -18,6 +18,14 @@ class TutorialAdapter(private val titulo: String, private val descripciones: Lis
     override fun onBindViewHolder(holder: TituloViewHolder, position: Int) {
         holder.txtTitulo.text = titulo
         holder.txtDescrip.text = descripciones[position]
+        holder.txtTitulo.alpha = 0f
+        holder.txtTitulo.translationY = 50f // Empieza un poco abajo
+        // Animamos la aparición
+        holder.txtTitulo.animate()
+            .alpha(1f)
+            .translationY(0f) // Sube a su posición original
+            .setDuration(800)
+            .start()
     }
 
     override fun getItemCount(): Int {
