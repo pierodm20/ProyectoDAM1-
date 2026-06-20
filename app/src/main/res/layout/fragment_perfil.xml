@@ -75,6 +75,39 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/optionMisReservas"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="16dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:background="?attr/selectableItemBackground"
+            android:gravity="center_vertical">
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/ic_reserva"
+                app:tint="@color/black" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginStart="16dp"
+                android:text="Mis Reservas"
+                android:textColor="@color/black"
+                android:textSize="16sp" />
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/ic_flecha_derecha"
+                app:tint="@color/black" />
+        </LinearLayout>
+
+        <LinearLayout
             android:id="@+id/optionConfiguraciones"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
