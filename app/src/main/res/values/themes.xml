@@ -44,5 +44,10 @@
         <item name="android:fontFamily">@font/variable_font_wght</item>
         <item name="android:textColor">@color/black</item>
     </style>
+    <style name="textosDetalles">
+        <item name="android:textSize">18sp</item>
+        <item name="android:fontFamily">@font/variable_font_wght</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
 
 </resources>

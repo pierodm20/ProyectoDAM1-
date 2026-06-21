@@ -1,5 +1,6 @@
 package com.cibertec.proyectodam1
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.widget.TextView
@@ -70,6 +71,7 @@ class LoginActivity : AppCompatActivity() {
         val uid = auth.currentUser
 
         if (uid != null) {
+            guardarUsuarioEnSesion(uid.email)
             val intent = Intent(this, InicioActivity::class.java)
             startActivity(intent)
             finish()
@@ -80,13 +82,13 @@ class LoginActivity : AppCompatActivity() {
         auth.signInWithEmailAndPassword(correo, contrasenia)
             .addOnCompleteListener { task ->
                 if(task.isSuccessful){
+                    guardarUsuarioEnSesion(correo)
                     accesoLogin()
                 }else{
                     mostrarMensaje("Error al iniciar sesión: ${task.exception?.message}")
                 }
             }
     }
-
     fun validar(correo: String, contrasenia: String): Boolean{
         return when{
             !correo.contains("@") || !correo.contains(".") -> {
@@ -100,7 +102,6 @@ class LoginActivity : AppCompatActivity() {
             else -> true
         }
     }
-
     fun accesoLogin(){
         val intent = Intent(this, InicioActivity::class.java)
         startActivity(intent)
@@ -109,5 +110,16 @@ class LoginActivity : AppCompatActivity() {
     }
     fun mostrarMensaje(mensaje: String){
         Toast.makeText(this, mensaje, Toast.LENGTH_SHORT).show()
+    }
+
+    fun guardarUsuarioEnSesion(correo: String?){
+        if (!correo.isNullOrEmpty()){
+            val share = getSharedPreferences("Sesion usuario", Context.MODE_PRIVATE)
+            with(share.edit()) {
+                putString("correo", correo)
+                apply()
+            }
+        }
+
     }
 }

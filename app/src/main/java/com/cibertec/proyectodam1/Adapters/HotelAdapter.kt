@@ -12,9 +12,9 @@ import com.cibertec.proyectodam1.Entitys.Hotel
 import com.cibertec.proyectodam1.R
 
 class HotelAdapter(
-    private val hoteles: List<Hotel>,
+    private var hoteles: List<Hotel>,
     val context: Activity,
-    private val onItemClick: (Hotel) -> Unit
+    private val onItemClick: (Int) -> Unit
 ): RecyclerView.Adapter<HotelAdapter.HotelAdapterViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HotelAdapterViewHolder {
@@ -33,7 +33,7 @@ class HotelAdapter(
 
         // Al hacer clic en la tarjeta (itemView), enviamos el hotel seleccionado
         holder.itemView.setOnClickListener {
-            onItemClick(hotel)
+            onItemClick(hotel.id)
         }
     }
 
@@ -47,5 +47,10 @@ class HotelAdapter(
         val tvHEstrellas : TextView = itemView.findViewById<TextView>(R.id.tvEstrellas)
         val tvHPrecioXNoche: TextView = itemView.findViewById<TextView>(R.id.tvPrecio)
         val ivHImagen: ImageView = itemView.findViewById<ImageView>(R.id.ivImagen)
+    }
+
+    fun actualizarLista(nuevaLista: List<Hotel>){
+        this.hoteles = nuevaLista
+        notifyDataSetChanged()
     }
 }

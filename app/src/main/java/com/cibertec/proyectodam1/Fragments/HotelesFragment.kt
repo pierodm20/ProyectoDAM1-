@@ -13,16 +13,23 @@ import com.cibertec.proyectodam1.Entitys.Hotel
 import com.cibertec.proyectodam1.R
 import com.cibertec.proyectodam1.db.ConexionDB
 import android.content.Intent
-import com.cibertec.proyectodam1.DetalleReservaActivity
+import com.google.android.material.search.SearchBar
+import com.google.android.material.search.SearchView
 
 class HotelesFragment : Fragment() {
 
     private lateinit var rvHotelesFrag: RecyclerView
     private lateinit var hotelAdapter: HotelAdapter
+    private lateinit var sbHotel: SearchBar
+    private lateinit var svHotel: SearchView
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_hoteles, container, false)
         rvHotelesFrag = view.findViewById<RecyclerView>(R.id.rvHotelesFrag)
+        sbHotel = view.findViewById<SearchBar>(R.id.sbHotel)
+        svHotel = view.findViewById<SearchView>(R.id.svHotel)
+        svHotel.editText.setTextColor(android.graphics.Color.BLACK)
+        svHotel.editText.setHintTextColor(android.graphics.Color.GRAY)
 
         // 1. Instanciamos la base de datos
         val db = ConexionDB(requireContext())
@@ -48,15 +55,34 @@ class HotelesFragment : Fragment() {
         cursor.close() // Siempre cerrar el cursor
 
         // 4. Inicializamos el adaptador con la lista real y la función de clic
-        hotelAdapter = HotelAdapter(listaHoteles, requireActivity() as Activity) { hotelSeleccionado ->
-            val intent = Intent(requireContext(), DetalleReservaActivity::class.java)
-            intent.putExtra("id_hotel", hotelSeleccionado.id)
-            intent.putExtra("nombre_hotel", hotelSeleccionado.nombre) // Enviamos el nombre
-            startActivity(intent)
+        hotelAdapter = HotelAdapter(listaHoteles, requireActivity()) { hotelSeleccionado ->
+            val fragmento = DetalleFragment()
+            val args = Bundle().apply {
+                putInt("id", hotelSeleccionado)
+            }
+            fragmento.arguments = args
+            parentFragmentManager.beginTransaction()
+                .replace(R.id.fcvContenedorLista, fragmento) // ⚠️ Revisa que este ID coincida con tu XML
+                .addToBackStack(null) // Permite regresar atrás
+                .commit()
         }
 
         rvHotelesFrag.layoutManager = LinearLayoutManager(requireContext())
         rvHotelesFrag.adapter = hotelAdapter
+
+        svHotel.setupWithSearchBar(sbHotel)
+
+        svHotel.editText.setOnEditorActionListener { view, id, event ->
+            val texto = svHotel.text.toString()
+            val listaFiltrada = listaHoteles.filter { hotel ->
+                hotel.nombre.contains(texto, ignoreCase = true) || hotel.ciudad.contains(texto, ignoreCase = true)
+
+            }
+            hotelAdapter.actualizarLista(listaFiltrada)
+
+            svHotel.hide()
+            true
+        }
 
         return view
     }

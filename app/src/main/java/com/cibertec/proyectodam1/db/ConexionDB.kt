@@ -72,25 +72,16 @@ class ConexionDB(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, nu
         return readableDatabase.rawQuery("SELECT * FROM HOTEL", null)
     }
 
-    // --- MÉTODOS CRUD USUARIOS ---
-    fun registrarUsuario(usuario: String, correo: String, contrasenia: String): Long {
-        val values = ContentValues().apply {
-            put("usuario", usuario); put("correo", correo); put("contraseña", contrasenia)
-        }
-        return writableDatabase.insert("USUARIO", null, values)
-    }
-
-    fun validarLogin(correo: String, contrasenia: String): Boolean {
-        val cursor = readableDatabase.rawQuery("SELECT * FROM USUARIO WHERE correo = ? AND contraseña = ?", arrayOf(correo, contrasenia))
-        val existe = cursor.moveToFirst()
-        cursor.close()
-        return existe
+    fun obtenerHotelPorId(idHotel: Int): Cursor{
+        return readableDatabase.rawQuery("SELECT * FROM HOTEL WHERE id_hotel = ?", arrayOf(idHotel.toString()))
     }
 
     // --- MÉTODOS CRUD RESERVAS ---
     fun registrarReserva(idHotel: Int, correo: String, fecha: String): Long {
         val values = ContentValues().apply {
-            put("id_hotel", idHotel); put("correo_usuario", correo); put("fecha", fecha)
+            put("id_hotel", idHotel);
+            put("correo_usuario", correo);
+            put("fecha", fecha)
         }
         return writableDatabase.insert("RESERVA", null, values)
     }
