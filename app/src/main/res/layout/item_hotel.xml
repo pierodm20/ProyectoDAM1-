@@ -4,15 +4,14 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@color/white"
+    android:backgroundTint="@color/transparencia"
     app:cardCornerRadius="20dp"
-    android:layout_margin="15dp">
+    android:layout_margin="30dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_margin="15dp">
+        android:orientation="vertical">
 
         <ImageView
             android:id="@+id/ivImagen"
@@ -21,31 +20,46 @@
             android:src="@drawable/fondo"
             android:scaleType="centerCrop"/>
 
-        <TextView
-            android:id="@+id/tvNombre"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Hotel: "/>
+       <LinearLayout
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:orientation="vertical"
+           android:layout_margin="10dp">
+
+           <TextView
+               android:id="@+id/tvNombre"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:fontFamily="@font/variable_font_wght"
+               android:textStyle="bold"
+               android:textColor="@color/black"
+               android:textSize="16sp"
+               android:text="Hotel: "/>
 
 
-        <TextView
-            android:id="@+id/tvCiudad"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Ciudad:"/>
+           <TextView
+               android:id="@+id/tvCiudad"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               style="@style/textos"
+               android:text="Ciudad:"/>
 
 
-        <TextView
-            android:id="@+id/tvEstrellas"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Estrellas: "/>
+           <TextView
+               android:id="@+id/tvEstrellas"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               style="@style/textos"
+               android:text="Estrellas: "/>
 
-        <TextView
-            android:id="@+id/tvPrecio"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Precio por noche: "/>
+           <TextView
+               android:id="@+id/tvPrecio"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               style="@style/textos"
+               android:text="Precio por noche: "/>
+
+       </LinearLayout>
 
     </LinearLayout>
 

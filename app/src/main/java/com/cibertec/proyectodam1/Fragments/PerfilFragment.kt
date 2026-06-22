@@ -12,9 +12,12 @@ import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import com.cibertec.proyectodam1.LoginActivity
 import com.cibertec.proyectodam1.MisReservasActivity
+import com.cibertec.proyectodam1.Models.Usuario
+import com.cibertec.proyectodam1.PerfilBottomSheet
 import com.cibertec.proyectodam1.R
 import com.google.android.material.button.MaterialButton
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 
 class PerfilFragment : Fragment() {
     private lateinit var txtUsuarioPerfil: TextView
@@ -33,11 +36,35 @@ class PerfilFragment : Fragment() {
         optionConfiguraciones = view.findViewById(R.id.optionConfiguraciones)
         optionCerrarSesion = view.findViewById(R.id.optionCerrarSesion)
 
-        txtUsuarioPerfil.text = "Piero Donayre"
+        val auth = FirebaseAuth.getInstance()
+        val db = FirebaseFirestore.getInstance()
+
+        val uid = auth.currentUser?.uid
+
+        if (uid != null){
+            db.collection("usuarios").document(uid).get()
+                .addOnSuccessListener { doc ->
+                    if (doc.exists()){
+                        val usuario = doc.toObject(Usuario::class.java)
+                        if (usuario != null){
+                            txtUsuarioPerfil.text = usuario.nombre
+                        }
+                    }else{
+                        mostrarMensaje("No se encontro el nombre")
+                    }
+                }
+                .addOnFailureListener { e ->
+                    mostrarMensaje("No se puedo cargar el perfil: ${e.message}")
+                }
+        }else{
+            mostrarMensaje("El usuario no esta logeado")
+        }
 
 
         optionDatosPersonales.setOnClickListener {
-            Toast.makeText(requireContext(), "Abriendo Datos personales", Toast.LENGTH_SHORT).show()
+            val bottom = PerfilBottomSheet()
+            bottom.show(parentFragmentManager, "PerfilBottomSheet")
+            mostrarMensaje("Abriendo Datos personales")
         }
 
 
@@ -47,7 +74,7 @@ class PerfilFragment : Fragment() {
         }
 
         optionConfiguraciones.setOnClickListener {
-            Toast.makeText(requireContext(), "Abriendo Configuraciones", Toast.LENGTH_SHORT).show()
+            mostrarMensaje("Abriendo Configuraciones")
         }
 
         optionCerrarSesion.setOnClickListener {
@@ -70,5 +97,9 @@ class PerfilFragment : Fragment() {
             }
         }
         return view
+    }
+
+    fun mostrarMensaje(mensaje: String){
+        Toast.makeText(requireContext(), mensaje, Toast.LENGTH_SHORT).show()
     }
 }

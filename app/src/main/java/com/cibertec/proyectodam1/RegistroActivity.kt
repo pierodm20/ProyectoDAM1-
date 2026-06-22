@@ -12,6 +12,7 @@ import com.google.android.material.button.MaterialButton
 import com.google.android.material.textfield.TextInputEditText
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.firestore.FirebaseFirestore
 import java.text.DateFormat
 import java.text.SimpleDateFormat
 import java.time.LocalDate
@@ -95,8 +96,8 @@ class RegistroActivity : AppCompatActivity() {
                     auth.currentUser?.let { user ->
                         val uid = user.uid
                         val usuarioMap = mapOf(
-                            "nombres" to nombres,
-                            "apellidos" to apellidos,
+                            "nombre" to nombres,
+                            "apellido" to apellidos,
                             "dni" to dni,
                             "telefono" to telefono,
                             "correo" to correo,
@@ -104,7 +105,14 @@ class RegistroActivity : AppCompatActivity() {
                         )
                         db.child("usuarios").child(uid).setValue(usuarioMap)
                             .addOnSuccessListener {
-                                irPantallaPrincipal()
+                                val db = FirebaseFirestore.getInstance()
+                                db.collection("usuarios").document(uid).set(usuarioMap)
+                                    .addOnSuccessListener {
+                                        irPantallaPrincipal()
+                                    }
+                                    .addOnFailureListener { e ->
+                                        mostrarMensaje("Error: ${e.message}")
+                                    }
                             }
                             .addOnFailureListener { e ->
                                 mostrarMensaje("Error al registrar usuario: ${e.message}")

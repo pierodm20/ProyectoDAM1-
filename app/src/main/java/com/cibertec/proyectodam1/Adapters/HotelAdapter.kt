@@ -26,9 +26,9 @@ class HotelAdapter(
         val hotel = hoteles[position]
 
         Glide.with(context).load(hotel.imagen).into(holder.ivHImagen)
-        holder.tvHNombre.text = "Hotel: ${hotel.nombre}"
-        holder.tvHCiudad.text = "Ciudad: ${hotel.ciudad}"
-        holder.tvHEstrellas.text = "Estrellas: ${hotel.estrellas}"
+        holder.tvHNombre.text = hotel.nombre
+        holder.tvHCiudad.text = hotel.ciudad
+        holder.tvHEstrellas.text = "⭐".repeat(hotel.estrellas)
         holder.tvHPrecioXNoche.text = "Precio por noche: S/. ${hotel.precioXnoche}"
 
         // Al hacer clic en la tarjeta (itemView), enviamos el hotel seleccionado
