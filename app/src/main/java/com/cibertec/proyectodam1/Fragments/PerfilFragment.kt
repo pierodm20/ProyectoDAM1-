@@ -23,7 +23,6 @@ class PerfilFragment : Fragment() {
     private lateinit var txtUsuarioPerfil: TextView
     private lateinit var optionDatosPersonales: LinearLayout
     private lateinit var optionMisReservas: LinearLayout // Nueva opción
-    private lateinit var optionConfiguraciones: LinearLayout
     private lateinit var optionCerrarSesion: LinearLayout
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -33,7 +32,6 @@ class PerfilFragment : Fragment() {
         txtUsuarioPerfil = view.findViewById(R.id.txtUsuarioPerfil)
         optionDatosPersonales = view.findViewById(R.id.optionDatosPersonales)
         optionMisReservas = view.findViewById(R.id.optionMisReservas)
-        optionConfiguraciones = view.findViewById(R.id.optionConfiguraciones)
         optionCerrarSesion = view.findViewById(R.id.optionCerrarSesion)
 
         val auth = FirebaseAuth.getInstance()
@@ -71,10 +69,6 @@ class PerfilFragment : Fragment() {
         optionMisReservas.setOnClickListener {
             val intent = Intent(requireContext(), MisReservasActivity::class.java)
             startActivity(intent)
-        }
-
-        optionConfiguraciones.setOnClickListener {
-            mostrarMensaje("Abriendo Configuraciones")
         }
 
         optionCerrarSesion.setOnClickListener {

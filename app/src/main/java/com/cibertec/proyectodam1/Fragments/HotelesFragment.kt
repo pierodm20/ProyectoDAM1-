@@ -9,10 +9,10 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.cibertec.proyectodam1.Adapters.HotelAdapter
-import com.cibertec.proyectodam1.Entitys.Hotel
 import com.cibertec.proyectodam1.R
 import com.cibertec.proyectodam1.db.ConexionDB
 import android.content.Intent
+import com.cibertec.proyectodam1.Models.Hotel
 import com.google.android.material.search.SearchBar
 import com.google.android.material.search.SearchView
 

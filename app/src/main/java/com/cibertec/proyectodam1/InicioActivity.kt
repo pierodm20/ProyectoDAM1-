@@ -21,7 +21,7 @@ class InicioActivity : AppCompatActivity() {
 
         bnvMenu = findViewById<BottomNavigationView>(R.id.bnvMenu)
         if (savedInstanceState == null){
-            cargarFragmento(HotelesFragment())
+            cargarFragmento(InicioFragment())
             bnvMenu.selectedItemId = R.id.Hoteles
         }
 

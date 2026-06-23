@@ -8,7 +8,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.cibertec.proyectodam1.Entitys.Hotel
+import com.cibertec.proyectodam1.Models.Hotel
 import com.cibertec.proyectodam1.R
 
 class HotelAdapter(
@@ -29,7 +29,7 @@ class HotelAdapter(
         holder.tvHNombre.text = hotel.nombre
         holder.tvHCiudad.text = hotel.ciudad
         holder.tvHEstrellas.text = "⭐".repeat(hotel.estrellas)
-        holder.tvHPrecioXNoche.text = "Precio por noche: S/. ${hotel.precioXnoche}"
+        holder.tvHPrecioXNoche.text = "Precio por noche: S/. ${hotel.precio}"
 
         // Al hacer clic en la tarjeta (itemView), enviamos el hotel seleccionado
         holder.itemView.setOnClickListener {
