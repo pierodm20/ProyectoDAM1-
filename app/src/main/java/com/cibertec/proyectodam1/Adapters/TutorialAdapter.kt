@@ -9,14 +9,14 @@ import com.cibertec.proyectodam1.R
 import com.google.android.material.button.MaterialButton
 import java.util.zip.Inflater
 
-class TutorialAdapter(private val titulo: String, private val descripciones: List<String>): RecyclerView.Adapter<TutorialAdapter.TituloViewHolder>() {
+class TutorialAdapter(private val titulo: List<String>, private val descripciones: List<String>): RecyclerView.Adapter<TutorialAdapter.TituloViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, p1: Int): TituloViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_tutorial, parent, false)
         return TituloViewHolder(view)
     }
 
     override fun onBindViewHolder(holder: TituloViewHolder, position: Int) {
-        holder.txtTitulo.text = titulo
+        holder.txtTitulo.text = titulo[position]
         holder.txtDescrip.text = descripciones[position]
         holder.txtTitulo.alpha = 0f
         holder.txtTitulo.translationY = 50f // Empieza un poco abajo

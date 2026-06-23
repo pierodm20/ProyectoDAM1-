@@ -10,6 +10,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.airbnb.lottie.LottieAnimationView
 import com.google.firebase.auth.FirebaseAuth
+import kotlin.jvm.java
 
 class SplashActivity : AppCompatActivity() {
     private lateinit var lottieLogo: LottieAnimationView

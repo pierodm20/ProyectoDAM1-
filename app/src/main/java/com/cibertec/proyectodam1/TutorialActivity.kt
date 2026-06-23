@@ -26,7 +26,7 @@ class TutorialActivity : AppCompatActivity() {
         dotsIndicator = findViewById<DotsIndicator>(R.id.dotsIndicator)
         btnComenzar = findViewById<MaterialButton>(R.id.btnComenzar)
 
-        val titulo = "Bienvenido a HotelMatch"
+        val titulo = listOf("Bienvinido a HotelMatch", "Precio Imperdibles", "En cualquier parte del Perú")
         val descripciones = listOf("Conoceras una experiencia interactiva para tus viajes", "Hoteles de toda parte del mundo al mejor precio", "Disfruta de tus viajes en los mejores lugares")
 
         viewPagerTutorial.adapter = TutorialAdapter(titulo, descripciones)

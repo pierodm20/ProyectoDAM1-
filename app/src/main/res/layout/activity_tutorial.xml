@@ -25,7 +25,7 @@
         android:layout_marginHorizontal="80dp"
         android:layout_marginVertical="20dp"
         android:text="Comenzar"
-        android:backgroundTint="@color/celeste"
+        android:backgroundTint="#8DE3B0"
         android:textColor="@color/black"/>
 
     <com.tbuonomo.viewpagerdotsindicator.DotsIndicator

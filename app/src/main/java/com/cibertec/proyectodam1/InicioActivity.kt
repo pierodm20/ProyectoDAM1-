@@ -22,7 +22,7 @@ class InicioActivity : AppCompatActivity() {
         bnvMenu = findViewById<BottomNavigationView>(R.id.bnvMenu)
         if (savedInstanceState == null){
             cargarFragmento(InicioFragment())
-            bnvMenu.selectedItemId = R.id.Hoteles
+            bnvMenu.selectedItemId = R.id.Inicio
         }
 
         bnvMenu.setOnItemSelectedListener { item ->
