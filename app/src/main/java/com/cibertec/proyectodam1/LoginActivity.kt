@@ -95,7 +95,7 @@ class LoginActivity : AppCompatActivity() {
                 mostrarMensaje("Correo invalido")
                 false
             }
-            contrasenia.length > 8 -> {
+            contrasenia.length < 8 -> {
                 mostrarMensaje("Contraseña tiene que tener 8 digitos")
                 false
             }

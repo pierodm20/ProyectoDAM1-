@@ -8,6 +8,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.cibertec.proyectodam1.Models.Hotel
 import com.cibertec.proyectodam1.R
 
@@ -25,13 +26,23 @@ class HotelAdapter(
     override fun onBindViewHolder(holder: HotelAdapterViewHolder, position: Int) {
         val hotel = hoteles[position]
 
-        Glide.with(context).load(hotel.imagen).into(holder.ivHImagen)
+        //  agregamos una transición suave y manejo de error por si la URL falla
+        Glide.with(context)
+            .load(hotel.imagen)
+            .placeholder(R.drawable.ic_launcher_foreground)
+            .error(R.drawable.ic_launcher_foreground)
+            .transition(DrawableTransitionOptions.withCrossFade())
+            .into(holder.ivHImagen)
+
         holder.tvHNombre.text = hotel.nombre
         holder.tvHCiudad.text = hotel.ciudad
-        holder.tvHEstrellas.text = "⭐".repeat(hotel.estrellas)
+
+        // Manejo seguro para evitar errores si las estrellas son negativas o muy altas
+        val estrellasCount = if (hotel.estrellas > 0) hotel.estrellas else 0
+        holder.tvHEstrellas.text = "⭐".repeat(estrellasCount)
+
         holder.tvHPrecioXNoche.text = "Precio por noche: S/. ${hotel.precio}"
 
-        // Al hacer clic en la tarjeta (itemView), enviamos el hotel seleccionado
         holder.itemView.setOnClickListener {
             onItemClick(hotel.id)
         }
@@ -42,11 +53,11 @@ class HotelAdapter(
     }
 
     inner class HotelAdapterViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
-        val tvHNombre: TextView = itemView.findViewById<TextView>(R.id.tvNombre)
-        val tvHCiudad: TextView = itemView.findViewById<TextView>(R.id.tvCiudad)
-        val tvHEstrellas : TextView = itemView.findViewById<TextView>(R.id.tvEstrellas)
-        val tvHPrecioXNoche: TextView = itemView.findViewById<TextView>(R.id.tvPrecio)
-        val ivHImagen: ImageView = itemView.findViewById<ImageView>(R.id.ivImagen)
+        val tvHNombre: TextView = itemView.findViewById(R.id.tvNombre)
+        val tvHCiudad: TextView = itemView.findViewById(R.id.tvCiudad)
+        val tvHEstrellas : TextView = itemView.findViewById(R.id.tvEstrellas)
+        val tvHPrecioXNoche: TextView = itemView.findViewById(R.id.tvPrecio)
+        val ivHImagen: ImageView = itemView.findViewById(R.id.ivImagen)
     }
 
     fun actualizarLista(nuevaLista: List<Hotel>){
