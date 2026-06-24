@@ -40,28 +40,25 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             style="@style/textosDetalles"
-            android:text="asdasdasd"/>
+            android:text=""/>
 
         <TextView
             android:id="@+id/txtCiudad"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            style="@style/textosDetalles"
-            android:text="asdasdasd"/>
+            style="@style/textosDetalles"/>
 
         <TextView
             android:id="@+id/txtEstrellas"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            style="@style/textosDetalles"
-            android:text="asdasdasd"/>
+            style="@style/textosDetalles" />
 
         <TextView
             android:id="@+id/txtPrecio"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            style="@style/textosDetalles"
-            android:text="asdasdasd"/>
+            style="@style/textosDetalles" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
