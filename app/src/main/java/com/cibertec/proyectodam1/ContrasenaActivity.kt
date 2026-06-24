@@ -13,6 +13,7 @@ import com.google.firebase.auth.FirebaseAuth
 
 class ContrasenaActivity : AppCompatActivity() {
     private lateinit var txtInCorreo: TextInputEditText
+    private lateinit var myvar: String;
     private lateinit var btnEnviarCorreo: MaterialButton
     private lateinit var auth: FirebaseAuth
 
